@@ -41,7 +41,7 @@ module.exports = {
     "import/resolver": {
       "typescript": {},
       "node": {
-        "extensions": [".ts", ".native.js"]
+        "extensions": [".ts", ".tsx", ".native.js"]
       }
     }
   }

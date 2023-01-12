@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import AppError from '../../errors/AppError';
+import AppError from '@shared/errors/AppError';
 
 import '../typeorm/database';
 
@@ -21,16 +21,13 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
             .json({ status: 'error', message: err.message })
     }
 
-    console.log(err);
-
     return res.status(500).json({
         status: 'error',
-        message: 'Internal Server Error'
+        message: 'Internal Server Error!'
     });
 });
 
 app.listen(port, () => {
-    console.log(`Server running 🚀 in port ${port}`);
-
+    console.log(`Server running on port ${port}`);  
 });
 

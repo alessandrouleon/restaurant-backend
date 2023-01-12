@@ -3,7 +3,7 @@
     "incremental": true,
     "target": "es2020",
     "lib": [
-      "ES2016",
+      "es2015",
       "es2018.regexp"
     ],
     "module": "commonjs",
@@ -30,8 +30,5 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true
-  },
-  "exclude": [
-    "jest.config.ts"
-  ]
+  }
 }
