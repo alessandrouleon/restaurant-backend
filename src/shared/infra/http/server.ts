@@ -2,7 +2,7 @@ import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import AppError from '@shared/errors/AppError';
+import AppErrors from '@shared/errors/AppErrors';
 
 import '../typeorm/database';
 
@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(cors());
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
-    if (err instanceof AppError) {
+    if (err instanceof AppErrors) {
         return res
             .status(err.statusCode)
             .json({ status: 'error', message: err.message })
@@ -28,6 +28,6 @@ app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
 });
 
 app.listen(port, () => {
-    console.log(`Server running on port ${port}`);  
+    console.log(`Server running 🌠 on port ${port}`);
 });
 
