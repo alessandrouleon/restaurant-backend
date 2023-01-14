@@ -5,6 +5,9 @@ import * as dotenv from 'dotenv';
 import AppErrors from '@shared/errors/AppErrors';
 
 import '../typeorm/database';
+import '@shared/container';
+import './routes';
+import { router } from './routes';
 
 dotenv.config();
 
@@ -13,6 +16,7 @@ const port = process.env.PORT || 3333;
 
 app.use(express.json());
 app.use(cors());
+app.use(router);
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
     if (err instanceof AppErrors) {

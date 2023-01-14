@@ -2,35 +2,38 @@ import { Column, CreateDateColumn, DeleteDateColumn, Entity, PrimaryGeneratedCol
 
 
 @Entity('employee')
-class Empployee {
+class Employee {
 
   @PrimaryGeneratedColumn('increment')
   id: number;
 
-  @Column({ length: 50 })
+  @Column()
   name: string;
 
-  @Column({ length: 50 })
+  @Column()
   username: string;
 
-  @Column({ length: 50 })
+  @Column()
   password: string;
 
-  @Column({ length: 50 })
-  role: string;
+  @Column()
+  email: string;
 
-  @Column({ length: 50 })
+  @Column()
+  rule: string;
+
+  @Column()
   department: string;
 
-  @CreateDateColumn({ length: 50 })
+  @CreateDateColumn()
   created_at: Date;
 
-  @UpdateDateColumn({ length: 50 })
+  @UpdateDateColumn()
   updated_at: Date;
 
-  @DeleteDateColumn({ length: 50 })
+  @DeleteDateColumn()
   deleted_at: Date;
 
 }
 
-export { Empployee }
+export { Employee }
