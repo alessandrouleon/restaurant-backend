@@ -7,7 +7,7 @@ import { Employee } from "../entities/Employee";
 class EmployeeRepository implements IEmployeeRepository {
   private ormRepository: Repository<Employee>;
 
-  constructor() {
+  public constructor() {
     this.ormRepository = getRepository(Employee);
   }
 
@@ -15,6 +15,14 @@ class EmployeeRepository implements IEmployeeRepository {
     const employee = this.ormRepository.create(data);
     await this.ormRepository.save(employee);
     return employee;
+  }
+
+  public async findByUserName(username: string): Promise<Employee | undefined> {
+    return await this.ormRepository.findOne({ username });
+  }
+
+  public async findByEmail(email: string): Promise<Employee | undefined> {
+    return await this.ormRepository.findOne({ email });
   }
 
 }

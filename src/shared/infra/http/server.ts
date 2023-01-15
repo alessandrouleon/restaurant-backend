@@ -1,8 +1,9 @@
 import 'reflect-metadata';
 import express, { NextFunction, Request, Response } from 'express';
+import 'express-async-errors';
 import cors from 'cors';
 import * as dotenv from 'dotenv';
-import AppErrors from '@shared/errors/AppErrors';
+import AppError from '@shared/errors/AppError';
 
 import '../typeorm/database';
 import '@shared/container';
@@ -19,7 +20,7 @@ app.use(cors());
 app.use(router);
 
 app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
-    if (err instanceof AppErrors) {
+    if (err instanceof AppError) {
         return res
             .status(err.statusCode)
             .json({ status: 'error', message: err.message })
