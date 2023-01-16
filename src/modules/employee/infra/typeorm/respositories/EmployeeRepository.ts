@@ -1,6 +1,6 @@
-import { ICreateEmployeeDTO } from "@modules/employee/dtos/IEmployeeDTO";
+import { ICreateEmployeeDTO, IUpdateEmployeeDTO } from "@modules/employee/dtos/IEmployeeDTO";
 import { IEmployeeRepository } from "@modules/employee/repositories/IEmployeeRepository";
-import { getRepository, Repository } from "typeorm";
+import { getRepository, Like, Repository } from "typeorm";
 import { Employee } from "../entities/Employee";
 
 
@@ -23,6 +23,15 @@ class EmployeeRepository implements IEmployeeRepository {
 
   public async findByEmail(email: string): Promise<Employee | undefined> {
     return await this.ormRepository.findOne({ email });
+  }
+
+  public async findById(id: number): Promise<Employee | undefined> {
+    return await this.ormRepository.findOne({ id });
+  }
+
+  public async update(employee: Employee): Promise<Employee> {
+    return await this.ormRepository.save(employee);
+
   }
 
 }

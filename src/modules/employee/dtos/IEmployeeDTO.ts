@@ -8,4 +8,8 @@ interface ICreateEmployeeDTO {
   department: string;
 }
 
-export { ICreateEmployeeDTO }
+interface IUpdateEmployeeDTO extends ICreateEmployeeDTO {
+  id: number;
+}
+
+export { ICreateEmployeeDTO, IUpdateEmployeeDTO }
